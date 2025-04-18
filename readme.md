@@ -1,6 +1,5 @@
-
-
-
+## js2uml
+JavaScript 代码转 UML 图工具
 ## 使用
 
 ```
@@ -22,14 +21,16 @@ Options:
 ```
 $ node ./src/main.js -i ./example/ -o ./output/example.html
 ```
+![example3](output/example3.png)
 
 ### 生成 plantuml example
 
 ```
 $ node ./src/main.js -e puml -i ./example/ -o ./output/example.puml
 ```
-如果需要支持 plantuml，需要下载 plantuml.jar
+**注意：生成 plantuml 图表，需要下载 plantuml.jar 支持**
 
+![example2](output/example2.png)
 [官网下载地址](https://plantuml.com/zh/download)
 [plantuml使用指南](https://plantuml.com/zh/gui)
 
@@ -37,10 +38,12 @@ $ node ./src/main.js -e puml -i ./example/ -o ./output/example.puml
 
 ### mermaid 显示超过最大节点数，无法显示问题
 
+> error: Maximum Text Size in Diagram exceeded
+
 ```
 mermaid.initialize({
 	startOnLoad: true,
-	maxTextSize: 90000, // 增加此属性，根据具体情况修改
+	maxTextSize: 90000, // 增加此属性，根据具体情况修改数值
 })
 ```
 

@@ -14,8 +14,12 @@
     "js2uml",
     "uml"
   ],
-  "author": "",
+  "author": "hotsuitor@163.com",
   "license": "ISC",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "devDependencies": {
     "@babel/generator": "^7.27.0",
     "@babel/parser": "^7.27.0",

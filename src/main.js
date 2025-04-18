@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import { parseCode } from './parser.js'
 import { UML_ENGINES, renderUML } from './renderer.js'
 import { Command } from 'commander'

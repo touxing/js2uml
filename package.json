@@ -1,13 +1,19 @@
 {
   "name": "js2uml",
   "version": "1.0.0",
-  "description": "js2uml tool",
+  "description": "js2uml 是一款弱小的 JavaScript 代码转 UML 图工具，支持 Mermaid 和 PlantUML 两种渲染引擎。用户可以轻松指定输入目录和输出文件路径，快速将 JavaScript 代码转换为直观的 UML 图表，提升代码理解和文档编写效率。",
   "type": "module",
   "main": "index.js",
+  "bin": {
+    "js2uml": "./src/main.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "js2uml",
+    "uml"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {

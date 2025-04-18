@@ -1,0 +1,3392 @@
+@startuml
+
+class Disposable {
+  +constructor()
+  +dispose()
+  #disposeInternal()
+}
+
+class BaseEvent {
+  +constructor()
+  +preventDefault()
+  +stopPropagation()
+}
+
+class Target {
+  +constructor()
+  +addEventListener()
+  +dispatchEvent()
+  +disposeInternal()
+  +getListeners()
+  +hasListener()
+  +removeEventListener()
+}
+
+class Observable {
+  +constructor()
+  +changed()
+  +getRevision()
+  #onInternal()
+  #onceInternal()
+  #unInternal()
+}
+
+class ObjectEvent {
+  +constructor()
+}
+
+class BaseObject {
+  +constructor()
+  +get()
+  +getKeys()
+  +getProperties()
+  +getPropertiesInternal()
+  +hasProperties()
+  +notify()
+  +addChangeListener()
+  +removeChangeListener()
+  +set()
+  +setProperties()
+  #applyProperties()
+  +unset()
+}
+
+class CollectionEvent {
+  +constructor()
+}
+
+class Collection {
+  +constructor()
+  +clear()
+  +extend()
+  +forEach()
+  +getArray()
+  +item()
+  +getLength()
+  +insertAt()
+  +pop()
+  +push()
+  +remove()
+  +removeAt()
+  +setAt()
+  -updateLength_()
+  -assertUnique_()
+}
+
+class ImageWrapper {
+  +constructor()
+  #changed()
+  +getExtent()
+  +getImage()
+  +getPixelRatio()
+  +getResolution()
+  +getState()
+  +load()
+  +setImage()
+  +setResolution()
+}
+
+class IconImageCache {
+  +constructor()
+  +clear()
+  +canExpireCache()
+  +expire()
+  +get()
+  +getPattern()
+  +set()
+  +setSize()
+}
+
+class IconImage {
+  +constructor()
+  -initializeImage_()
+  -isTainted_()
+  -dispatchChangeEvent_()
+  -handleImageError_()
+  -handleImageLoad_()
+  +getImage()
+  +getPixelRatio()
+  +getImageState()
+  +getHitDetectionImage()
+  +getSize()
+  +getSrc()
+  +load()
+  -replaceColor_()
+  +ready()
+}
+
+class Control {
+  +constructor()
+  +disposeInternal()
+  +getMap()
+  +setMap()
+  +render()
+  +setTarget()
+}
+
+class Attribution {
+  +constructor()
+  -collectSourceAttributions_()
+  -updateElement_()
+  -handleClick_()
+  -handleToggle_()
+  +getCollapsible()
+  +setCollapsible()
+  +setCollapsed()
+  +getCollapsed()
+  +render()
+}
+
+class Rotate {
+  +constructor()
+  -handleClick_()
+  -resetNorth_()
+  +render()
+}
+
+class Zoom {
+  +constructor()
+  -handleClick_()
+  -zoomByDelta_()
+}
+
+class FullScreen {
+  +constructor()
+  -handleClick_()
+  -handleFullScreen_()
+  -handleFullScreenChange_()
+  -setClassName_()
+  +setMap()
+  -handleMapTargetChange_()
+}
+
+class Projection {
+  +constructor()
+  +canWrapX()
+  +getCode()
+  +getExtent()
+  +getUnits()
+  +getMetersPerUnit()
+  +getWorldExtent()
+  +getAxisOrientation()
+  +isGlobal()
+  +setGlobal()
+  +getDefaultTileGrid()
+  +setDefaultTileGrid()
+  +setExtent()
+  +setWorldExtent()
+  +setGetPointResolution()
+  +getPointResolutionFunc()
+}
+
+class EPSG3857Projection {
+  +constructor()
+}
+
+class EPSG4326Projection {
+  +constructor()
+}
+
+class MousePosition {
+  +constructor()
+  -handleProjectionChanged_()
+  +getCoordinateFormat()
+  +getProjection()
+  #handleMouseMove()
+  #handleMouseOut()
+  +setMap()
+  +setCoordinateFormat()
+  +setProjection()
+  -updateHTML_()
+  +render()
+}
+
+class MapEvent {
+  +constructor()
+}
+
+class MapBrowserEvent {
+  +constructor()
+  +pixel()
+  +pixel()
+  +coordinate()
+  +coordinate()
+  +preventDefault()
+  +stopPropagation()
+}
+
+class MapBrowserEventHandler {
+  +constructor()
+  -emulateClick_()
+  -updateActivePointers_()
+  -handlePointerUp_()
+  -isMouseActionButton_()
+  -handlePointerDown_()
+  -handlePointerMove_()
+  -relayMoveEvent_()
+  -handleTouchMove_()
+  -isMoving_()
+  +disposeInternal()
+}
+
+class PriorityQueue {
+  +constructor()
+  +clear()
+  +dequeue()
+  +enqueue()
+  +getCount()
+  -getLeftChildIndex_()
+  -getRightChildIndex_()
+  -getParentIndex_()
+  -heapify_()
+  +isEmpty()
+  +isKeyQueued()
+  +isQueued()
+  -siftUp_()
+  -siftDown_()
+  +reprioritize()
+}
+
+class TileQueue {
+  +constructor()
+  +enqueue()
+  +getTilesLoading()
+  #handleTileChange()
+  +loadMoreTiles()
+}
+
+class Geometry {
+  +constructor()
+  +simplifyTransformed()
+  +clone()
+  +closestPointXY()
+  +containsXY()
+  +getClosestPoint()
+  +intersectsCoordinate()
+  #computeExtent()
+  +getExtent()
+  +rotate()
+  +scale()
+  +simplify()
+  +getSimplifiedGeometry()
+  +getType()
+  +applyTransform()
+  +intersectsExtent()
+  +translate()
+  +transform()
+}
+
+class SimpleGeometry {
+  +constructor()
+  #computeExtent()
+  +getCoordinates()
+  +getFirstCoordinate()
+  +getFlatCoordinates()
+  +getLastCoordinate()
+  +getLayout()
+  +getSimplifiedGeometry()
+  #getSimplifiedGeometryInternal()
+  +getStride()
+  +setFlatCoordinates()
+  +setCoordinates()
+  #setLayout()
+  +applyTransform()
+  +rotate()
+  +scale()
+  +translate()
+}
+
+class LinearRing {
+  +constructor()
+  +clone()
+  +closestPointXY()
+  +getArea()
+  +getCoordinates()
+  #getSimplifiedGeometryInternal()
+  +getType()
+  +intersectsExtent()
+  +setCoordinates()
+}
+
+class Point {
+  +constructor()
+  +clone()
+  +closestPointXY()
+  +getCoordinates()
+  #computeExtent()
+  +getType()
+  +intersectsExtent()
+  +setCoordinates()
+}
+
+class Polygon {
+  +constructor()
+  +appendLinearRing()
+  +clone()
+  +closestPointXY()
+  +containsXY()
+  +getArea()
+  +getCoordinates()
+  +getEnds()
+  +getFlatInteriorPoint()
+  +getInteriorPoint()
+  +getLinearRingCount()
+  +getLinearRing()
+  +getLinearRings()
+  +getOrientedFlatCoordinates()
+  #getSimplifiedGeometryInternal()
+  +getType()
+  +intersectsExtent()
+  +setCoordinates()
+}
+
+class View {
+  +constructor()
+  +applyOptions_()
+  +padding()
+  +padding()
+  +getUpdatedOptions_()
+  +animate()
+  +animateInternal()
+  +getAnimating()
+  +getInteracting()
+  +cancelAnimations()
+  +updateAnimations_()
+  +calculateCenterRotate()
+  +calculateCenterZoom()
+  -getViewportSize_()
+  +setViewportSize()
+  +getCenter()
+  +getCenterInternal()
+  +getConstraints()
+  +getConstrainResolution()
+  +getHints()
+  +calculateExtent()
+  +calculateExtentInternal()
+  +getMaxResolution()
+  +getMinResolution()
+  +getMaxZoom()
+  +setMaxZoom()
+  +getMinZoom()
+  +setMinZoom()
+  +setConstrainResolution()
+  +getProjection()
+  +getResolution()
+  +getResolutions()
+  +getResolutionForExtent()
+  +getResolutionForExtentInternal()
+  +getResolutionForValueFunction()
+  +getRotation()
+  +getValueForResolutionFunction()
+  -getViewportSizeMinusPadding_()
+  +getState()
+  +getViewStateAndExtent()
+  +getZoom()
+  +getZoomForResolution()
+  +getResolutionForZoom()
+  +fit()
+  +rotatedExtentForGeometry()
+  +fitInternal()
+  +centerOn()
+  +centerOnInternal()
+  +calculateCenterShift()
+  +isDef()
+  +adjustCenter()
+  +adjustCenterInternal()
+  +adjustResolution()
+  +adjustResolutionInternal()
+  +adjustZoom()
+  +adjustRotation()
+  +adjustRotationInternal()
+  +setCenter()
+  +setCenterInternal()
+  +setHint()
+  +setResolution()
+  +setRotation()
+  +setZoom()
+  -applyTargetState_()
+  +resolveConstraints()
+  +beginInteraction()
+  +endInteraction()
+  +endInteractionInternal()
+  +getConstrainedCenter()
+  +getConstrainedZoom()
+  +getConstrainedResolution()
+}
+
+class Kinetic {
+  +constructor()
+  +begin()
+  +update()
+  +end()
+  +getDistance()
+  +getAngle()
+}
+
+class Interaction {
+  +constructor()
+  +getActive()
+  +getMap()
+  +handleEvent()
+  +setActive()
+  +setMap()
+}
+
+class DoubleClickZoom {
+  +constructor()
+  +handleEvent()
+}
+
+class PointerInteraction {
+  +constructor()
+  +getPointerCount()
+  #handleDownEvent()
+  #handleDragEvent()
+  +handleEvent()
+  #handleMoveEvent()
+  #handleUpEvent()
+  +stopDown()
+  -updateTrackedPointers_()
+}
+
+class DragPan {
+  +constructor()
+  +handleDragEvent()
+  +handleUpEvent()
+  +handleDownEvent()
+}
+
+class DragRotate {
+  +constructor()
+  +handleDragEvent()
+  +handleUpEvent()
+  +handleDownEvent()
+}
+
+class RenderBox {
+  +constructor()
+  +disposeInternal()
+  -render_()
+  +setMap()
+  +setPixels()
+  +createOrUpdateGeometry()
+  +getGeometry()
+}
+
+class DragBoxEvent {
+  +constructor()
+}
+
+class DragBox {
+  +constructor()
+  +defaultBoxEndCondition()
+  +getGeometry()
+  +handleDragEvent()
+  +handleUpEvent()
+  +handleDownEvent()
+  +onBoxEnd()
+  +setActive()
+  +setMap()
+}
+
+class DragZoom {
+  +constructor()
+  +onBoxEnd()
+}
+
+class KeyboardPan {
+  +constructor()
+  +handleEvent()
+}
+
+class KeyboardZoom {
+  +constructor()
+  +handleEvent()
+}
+
+class MouseWheelZoom {
+  +constructor()
+  -endInteraction_()
+  +handleEvent()
+  -handleWheelZoom_()
+  +setMouseAnchor()
+}
+
+class PinchRotate {
+  +constructor()
+  +handleDragEvent()
+  +handleUpEvent()
+  +handleDownEvent()
+}
+
+class PinchZoom {
+  +constructor()
+  +handleDragEvent()
+  +handleUpEvent()
+  +handleDownEvent()
+}
+
+class BaseLayer {
+  +constructor()
+  +getBackground()
+  +getClassName()
+  +getLayerState()
+  +getLayersArray()
+  +getLayerStatesArray()
+  +getExtent()
+  +getMaxResolution()
+  +getMinResolution()
+  +getMinZoom()
+  +getMaxZoom()
+  +getOpacity()
+  +getSourceState()
+  +getVisible()
+  +getZIndex()
+  +setBackground()
+  +setExtent()
+  +setMaxResolution()
+  +setMinResolution()
+  +setMaxZoom()
+  +setMinZoom()
+  +setOpacity()
+  +setVisible()
+  +setZIndex()
+  +disposeInternal()
+}
+
+class GroupEvent {
+  +constructor()
+}
+
+class LayerGroup {
+  +constructor()
+  -handleLayerChange_()
+  -handleLayersChanged_()
+  +registerLayerListeners_()
+  +handleLayerGroupAdd_()
+  +handleLayerGroupRemove_()
+  -handleLayersAdd_()
+  -handleLayersRemove_()
+  +getLayers()
+  +setLayers()
+  +getLayersArray()
+  +getLayerStatesArray()
+  +getSourceState()
+}
+
+class Layer {
+  +constructor()
+  +getLayersArray()
+  +getLayerStatesArray()
+  +getSource()
+  +getRenderSource()
+  +getSourceState()
+  -handleSourceChange_()
+  -handleSourcePropertyChange_()
+  +getFeatures()
+  +getData()
+  +isVisible()
+  +getAttributions()
+  +render()
+  +unrender()
+  +getDeclutter()
+  +renderDeclutter()
+  +renderDeferred()
+  +setMapInternal()
+  +getMapInternal()
+  +setMap()
+  -handlePrecompose_()
+  +setSource()
+  +getRenderer()
+  +hasRenderer()
+  #createRenderer()
+  +clearRenderer()
+  +disposeInternal()
+}
+
+class LiteralExpression {
+  +constructor()
+}
+
+class CallExpression {
+  +constructor()
+}
+
+class ImageStyle {
+  +constructor()
+  +clone()
+  +getOpacity()
+  +getRotateWithView()
+  +getRotation()
+  +getScale()
+  +getScaleArray()
+  +getDisplacement()
+  +getDeclutterMode()
+  +getAnchor()
+  +getImage()
+  +getHitDetectionImage()
+  +getPixelRatio()
+  +getImageState()
+  +getImageSize()
+  +getOrigin()
+  +getSize()
+  +setDisplacement()
+  +setOpacity()
+  +setRotateWithView()
+  +setRotation()
+  +setScale()
+  +listenImageChange()
+  +load()
+  +unlistenImageChange()
+  +ready()
+}
+
+class RegularShape {
+  +constructor()
+  +clone()
+  +getAnchor()
+  +getAngle()
+  +getFill()
+  +setFill()
+  +getHitDetectionImage()
+  +getImage()
+  +getPixelRatio()
+  +getImageSize()
+  +getImageState()
+  +getOrigin()
+  +getPoints()
+  +getRadius()
+  +getRadius2()
+  +getSize()
+  +getStroke()
+  +setStroke()
+  +listenImageChange()
+  +load()
+  +unlistenImageChange()
+  -calculateLineJoinSize_()
+  #createRenderOptions()
+  #render()
+  -draw_()
+  -createHitDetectionCanvas_()
+  -createPath_()
+  -drawHitDetectionCanvas_()
+  +ready()
+}
+
+class CircleStyle {
+  +constructor()
+  +clone()
+  +setRadius()
+}
+
+class Fill {
+  +constructor()
+  +clone()
+  +getColor()
+  +setColor()
+  +getKey()
+  +loading()
+  +ready()
+}
+
+class Icon {
+  +constructor()
+  +clone()
+  +getAnchor()
+  +setAnchor()
+  +getColor()
+  +getImage()
+  +getPixelRatio()
+  +getImageSize()
+  +getImageState()
+  +getHitDetectionImage()
+  +getOrigin()
+  +getSrc()
+  +getSize()
+  +getWidth()
+  +getHeight()
+  +setScale()
+  +listenImageChange()
+  +load()
+  +unlistenImageChange()
+  +ready()
+}
+
+class Stroke {
+  +constructor()
+  +clone()
+  +getColor()
+  +getLineCap()
+  +getLineDash()
+  +getLineDashOffset()
+  +getLineJoin()
+  +getMiterLimit()
+  +getWidth()
+  +setColor()
+  +setLineCap()
+  +setLineDash()
+  +setLineDashOffset()
+  +setLineJoin()
+  +setMiterLimit()
+  +setWidth()
+}
+
+class Style {
+  +constructor()
+  +clone()
+  +getRenderer()
+  +setRenderer()
+  +setHitDetectionRenderer()
+  +getHitDetectionRenderer()
+  +getGeometry()
+  +getGeometryFunction()
+  +getFill()
+  +setFill()
+  +getImage()
+  +setImage()
+  +getStroke()
+  +setStroke()
+  +getText()
+  +setText()
+  +getZIndex()
+  +setGeometry()
+  +setZIndex()
+}
+
+class Text {
+  +constructor()
+  +clone()
+  +getOverflow()
+  +getFont()
+  +getMaxAngle()
+  +getPlacement()
+  +getRepeat()
+  +getOffsetX()
+  +getOffsetY()
+  +getFill()
+  +getRotateWithView()
+  +getKeepUpright()
+  +getRotation()
+  +getScale()
+  +getScaleArray()
+  +getStroke()
+  +getText()
+  +getTextAlign()
+  +getJustify()
+  +getTextBaseline()
+  +getBackgroundFill()
+  +getBackgroundStroke()
+  +getPadding()
+  +getDeclutterMode()
+  +setOverflow()
+  +setFont()
+  +setMaxAngle()
+  +setOffsetX()
+  +setOffsetY()
+  +setPlacement()
+  +setRepeat()
+  +setRotateWithView()
+  +setKeepUpright()
+  +setFill()
+  +setRotation()
+  +setScale()
+  +setStroke()
+  +setText()
+  +setTextAlign()
+  +setJustify()
+  +setTextBaseline()
+  +setBackgroundFill()
+  +setBackgroundStroke()
+  +setPadding()
+}
+
+class BaseVectorLayer {
+  +constructor()
+  +getDeclutter()
+  +getFeatures()
+  +getRenderBuffer()
+  +getRenderOrder()
+  +getStyle()
+  +getStyleFunction()
+  +getUpdateWhileAnimating()
+  +getUpdateWhileInteracting()
+  +renderDeclutter()
+  +setRenderOrder()
+  +setStyle()
+  +setDeclutter()
+}
+
+class RenderEvent {
+  +constructor()
+}
+
+class MapRenderer {
+  +constructor()
+  +dispatchRenderEvent()
+  #calculateMatrices2D()
+  +forEachFeatureAtCoordinate()
+  +hasFeatureAtCoordinate()
+  +getMap()
+  +renderFrame()
+  #scheduleExpireIconCache()
+}
+
+class CompositeMapRenderer {
+  +constructor()
+  +dispatchRenderEvent()
+  +disposeInternal()
+  +renderFrame()
+  +declutter()
+}
+
+class Overlay {
+  +constructor()
+  +getElement()
+  +getId()
+  +getMap()
+  +getOffset()
+  +getPosition()
+  +getPositioning()
+  #handleElementChanged()
+  #handleMapChanged()
+  #render()
+  #handleOffsetChanged()
+  #handlePositionChanged()
+  #handlePositioningChanged()
+  +setElement()
+  +setMap()
+  +setOffset()
+  +setPosition()
+  #performAutoPan()
+  +panIntoView()
+  #getRect()
+  +setPositioning()
+  #setVisible()
+  #updatePixelPosition()
+  #updateRenderedPosition()
+  +getOptions()
+}
+
+class OverviewMap {
+  +constructor()
+  +setMap()
+  -handleMapPropertyChange_()
+  -bindView_()
+  -unbindView_()
+  -handleRotationChanged_()
+  -validateExtent_()
+  -resetExtent_()
+  -recenter_()
+  -updateBox_()
+  -updateBoxAfterOvmapIsRendered_()
+  -handleClick_()
+  -handleToggle_()
+  +getCollapsible()
+  +setCollapsible()
+  +setCollapsed()
+  +getCollapsed()
+  +getRotateWithView()
+  +setRotateWithView()
+  +getOverviewMap()
+  +render()
+}
+
+class ScaleLine {
+  +constructor()
+  +getUnits()
+  -handleUnitsChanged_()
+  +setUnits()
+  +setDpi()
+  -updateElement_()
+  -createScaleBar()
+  +createMarker()
+  +createStepText()
+  +getScaleForResolution()
+  +render()
+}
+
+class ZoomSlider {
+  +constructor()
+  +setMap()
+  -initSlider_()
+  -handleContainerClick_()
+  -handleDraggerStart_()
+  -handleDraggerDrag_()
+  -handleDraggerEnd_()
+  -setThumbPosition_()
+  -getRelativePosition_()
+  -getResolutionForPosition_()
+  -getPositionForResolution_()
+  +render()
+}
+
+class ZoomToExtent {
+  +constructor()
+  -handleClick_()
+  #handleZoomToExtent()
+}
+
+class Tile {
+  +constructor()
+  #changed()
+  +release()
+  +getKey()
+  +getTileCoord()
+  +getState()
+  +setState()
+  +load()
+  +getAlpha()
+  +inTransition()
+  +endTransition()
+  +disposeInternal()
+}
+
+class DataTile {
+  +constructor()
+  +getSize()
+  +getData()
+  +getError()
+  +load()
+  +disposeInternal()
+}
+
+class SnapEvent {
+  +constructor()
+}
+
+class WebGLArrayBuffer {
+  +constructor()
+  +ofSize()
+  +fromArray()
+  +fromArrayBuffer()
+  +getType()
+  +getArray()
+  +setArray()
+  +getUsage()
+  +getSize()
+}
+
+class WebGLPostProcessingPass {
+  +constructor()
+  +getRenderTargetTexture()
+  +getGL()
+  +init()
+  +apply()
+  +getFrameBuffer()
+  +getDepthBuffer()
+  -applyUniforms()
+}
+
+class WebGLHelper {
+  +constructor()
+  +setUniforms()
+  +addUniforms()
+  +canvasCacheKeyMatches()
+  +getExtension()
+  +bindBuffer()
+  +flushBufferData()
+  +deleteBuffer()
+  +disposeInternal()
+  +prepareDraw()
+  +bindFrameBuffer()
+  +bindInitialFrameBuffer()
+  +bindTexture()
+  +bindAttribute()
+  +prepareDrawToRenderTarget()
+  +drawElements()
+  +finalizeDraw()
+  +getCanvas()
+  +getGL()
+  +applyFrameState()
+  +applyHitDetectionUniform()
+  +applyUniforms()
+  +useProgram()
+  +compileShader()
+  +getProgram()
+  +getUniformLocation()
+  +getAttributeLocation()
+  +makeProjectionTransform()
+  +setUniformFloatValue()
+  +setUniformFloatVec2()
+  +setUniformFloatVec4()
+  +setUniformMatrixValue()
+  -enableAttributeArray_()
+  +enableAttributes()
+  -handleWebGLContextLost()
+  -handleWebGLContextRestored()
+  +needsToBeRecreated()
+  +createTexture()
+}
+
+class ImageTile {
+  +constructor()
+  +getImage()
+  +setImage()
+  -handleImageError_()
+  -handleImageLoad_()
+  +load()
+  -unlistenImage_()
+  +disposeInternal()
+}
+
+class Triangulation {
+  +constructor()
+  -addTriangle_()
+  -addQuad_()
+  +calculateSourceExtent()
+  +getTriangles()
+}
+
+class ReprojTile {
+  +constructor()
+  +getImage()
+  -reproject_()
+  +load()
+  -unlistenSources_()
+  +release()
+}
+
+class BaseTileRepresentation {
+  +constructor()
+  +setTile()
+  #uploadTile()
+  +setReady()
+  +handleTileChange_()
+  +setHelper()
+  +disposeInternal()
+}
+
+class TileTexture {
+  +constructor()
+  +setHelper()
+  +uploadTile()
+  -getImagePixelData_()
+  -getArrayPixelData_()
+  +getPixelData()
+}
+
+class TileRange {
+  +constructor()
+  +contains()
+  +containsTileRange()
+  +containsXY()
+  +equals()
+  +extend()
+  +getHeight()
+  +getSize()
+  +getWidth()
+  +intersects()
+}
+
+class LRUCache {
+  +constructor()
+  +deleteOldest()
+  +canExpireCache()
+  +expireCache()
+  +clear()
+  +containsKey()
+  +forEach()
+  +get()
+  +remove()
+  +getCount()
+  +getKeys()
+  +getValues()
+  +peekLast()
+  +peekLastKey()
+  +peekFirstKey()
+  +peek()
+  +pop()
+  +replace()
+  +set()
+  +setSize()
+}
+
+class LayerRenderer {
+  +constructor()
+  +getStaleKeys()
+  +prependStaleKey()
+  +getFeatures()
+  +getData()
+  +prepareFrame()
+  +renderFrame()
+  +forEachFeatureAtCoordinate()
+  +getLayer()
+  +handleFontsChanged()
+  -handleImageChange_()
+  #loadImage()
+  #renderIfReadyAndVisible()
+  +renderDeferred()
+  +disposeInternal()
+}
+
+class WebGLLayerRenderer {
+  +constructor()
+  #dispatchPreComposeEvent()
+  #dispatchPostComposeEvent()
+  +reset()
+  #removeHelper()
+  +prepareFrame()
+  #afterHelperCreated()
+  #prepareFrameInternal()
+  #clearCache()
+  +disposeInternal()
+  -dispatchRenderEvent_()
+  #preRender()
+  #postRender()
+}
+
+class WebGLBaseTileLayerRenderer {
+  +constructor()
+  +reset()
+  +prepareFrameInternal()
+  #createTileRepresentation()
+  +enqueueTiles()
+  #beforeTilesRender()
+  #beforeTilesMaskRender()
+  #renderTile()
+  #renderTileMask()
+  +drawTile_()
+  +renderFrame()
+  #beforeFinalize()
+  -findAltTiles_()
+  +clearCache()
+  +afterHelperCreated()
+  +disposeInternal()
+}
+
+class WebGLTileLayerRenderer {
+  +constructor()
+  +reset()
+  +afterHelperCreated()
+  +removeHelper()
+  +createTileRepresentation()
+  +beforeTilesRender()
+  +renderTile()
+  +getData()
+  +disposeInternal()
+}
+
+class PaletteTexture {
+  +constructor()
+  +getTexture()
+  +delete()
+}
+
+class Feature {
+  +constructor()
+  +clone()
+  +getGeometry()
+  +getId()
+  +getGeometryName()
+  +getStyle()
+  +getStyleFunction()
+  -handleGeometryChange_()
+  -handleGeometryChanged_()
+  +setGeometry()
+  +setStyle()
+  +setId()
+  +setGeometryName()
+}
+
+class LineString {
+  +constructor()
+  +appendCoordinate()
+  +clone()
+  +closestPointXY()
+  +forEachSegment()
+  +getCoordinateAtM()
+  +getCoordinates()
+  +getCoordinateAt()
+  +getLength()
+  +getFlatMidpoint()
+  #getSimplifiedGeometryInternal()
+  +getType()
+  +intersectsExtent()
+  +setCoordinates()
+}
+
+class MultiLineString {
+  +constructor()
+  +appendLineString()
+  +clone()
+  +closestPointXY()
+  +getCoordinateAtM()
+  +getCoordinates()
+  +getEnds()
+  +getLineString()
+  +getLineStrings()
+  +getLength()
+  +getFlatMidpoints()
+  #getSimplifiedGeometryInternal()
+  +getType()
+  +intersectsExtent()
+  +setCoordinates()
+}
+
+class MultiPoint {
+  +constructor()
+  +appendPoint()
+  +clone()
+  +closestPointXY()
+  +getCoordinates()
+  +getPoint()
+  +getPoints()
+  +getType()
+  +intersectsExtent()
+  +setCoordinates()
+}
+
+class MultiPolygon {
+  +constructor()
+  +appendPolygon()
+  +clone()
+  +closestPointXY()
+  +containsXY()
+  +getArea()
+  +getCoordinates()
+  +getEndss()
+  +getFlatInteriorPoints()
+  +getInteriorPoints()
+  +getOrientedFlatCoordinates()
+  #getSimplifiedGeometryInternal()
+  +getPolygon()
+  +getPolygons()
+  +getType()
+  +intersectsExtent()
+  +setCoordinates()
+}
+
+class Circle {
+  +constructor()
+  +clone()
+  +closestPointXY()
+  +containsXY()
+  +getCenter()
+  #computeExtent()
+  +getRadius()
+  -getRadiusSquared_()
+  +getType()
+  +intersectsExtent()
+  +setCenter()
+  +setCenterAndRadius()
+  +getCoordinates()
+  +setCoordinates()
+  +setRadius()
+  +rotate()
+}
+
+class GeometryCollection {
+  +constructor()
+  -unlistenGeometriesChange_()
+  -listenGeometriesChange_()
+  +clone()
+  +closestPointXY()
+  +containsXY()
+  #computeExtent()
+  +getGeometries()
+  +getGeometriesArray()
+  +getGeometriesArrayRecursive()
+  +getSimplifiedGeometry()
+  +getType()
+  +intersectsExtent()
+  +isEmpty()
+  +rotate()
+  +scale()
+  +setGeometries()
+  +setGeometriesArray()
+  +applyTransform()
+  +translate()
+  +disposeInternal()
+}
+
+class RenderFeature {
+  +constructor()
+  +get()
+  +getExtent()
+  +getFlatInteriorPoint()
+  +getFlatInteriorPoints()
+  +getFlatMidpoint()
+  +getFlatMidpoints()
+  +getId()
+  +getOrientedFlatCoordinates()
+  +getGeometry()
+  +getSimplifiedGeometry()
+  +simplifyTransformed()
+  +getProperties()
+  +getPropertiesInternal()
+  +getStride()
+  +getStyleFunction()
+  +getType()
+  +transform()
+  +applyTransform()
+  +clone()
+  +getEnds()
+  +enableSimplifyTransformed()
+}
+
+class FeatureFormat {
+  +constructor()
+  #getReadOptions()
+  #adaptOptions()
+  +getType()
+  +readFeature()
+  +readFeatures()
+  +readGeometry()
+  +readProjection()
+  +writeFeature()
+  +writeFeatures()
+  +writeGeometry()
+}
+
+class JSONFeature {
+  +constructor()
+  +getType()
+  +readFeature()
+  +readFeatures()
+  #readFeatureFromObject()
+  #readFeaturesFromObject()
+  +readGeometry()
+  #readGeometryFromObject()
+  +readProjection()
+  #readProjectionFromObject()
+  +writeFeature()
+  +writeFeatureObject()
+  +writeFeatures()
+  +writeFeaturesObject()
+  +writeGeometry()
+  +writeGeometryObject()
+}
+
+class EsriJSON {
+  +constructor()
+  #readFeatureFromObject()
+  #readFeaturesFromObject()
+  #readGeometryFromObject()
+  #readProjectionFromObject()
+  +writeGeometryObject()
+  +writeFeatureObject()
+  +writeFeaturesObject()
+}
+
+class Filter {
+  +constructor()
+  +getTagName()
+}
+
+class LogicalNary {
+  +constructor()
+}
+
+class And {
+  +constructor()
+}
+
+class Bbox {
+  +constructor()
+}
+
+class Comparison {
+  +constructor()
+}
+
+class ComparisonBinary {
+  +constructor()
+}
+
+class Spatial {
+  +constructor()
+}
+
+class Contains {
+  +constructor()
+}
+
+class Disjoint {
+  +constructor()
+}
+
+class During {
+  +constructor()
+}
+
+class DWithin {
+  +constructor()
+}
+
+class EqualTo {
+  +constructor()
+}
+
+class GreaterThan {
+  +constructor()
+}
+
+class GreaterThanOrEqualTo {
+  +constructor()
+}
+
+class Intersects {
+  +constructor()
+}
+
+class IsBetween {
+  +constructor()
+}
+
+class IsLike {
+  +constructor()
+}
+
+class IsNull {
+  +constructor()
+}
+
+class LessThan {
+  +constructor()
+}
+
+class LessThanOrEqualTo {
+  +constructor()
+}
+
+class Not {
+  +constructor()
+}
+
+class NotEqualTo {
+  +constructor()
+}
+
+class Or {
+  +constructor()
+}
+
+class ResourceId {
+  +constructor()
+}
+
+class Within {
+  +constructor()
+}
+
+class GeoJSON {
+  +constructor()
+  #readFeatureFromObject()
+  #readFeaturesFromObject()
+  #readGeometryFromObject()
+  #readProjectionFromObject()
+  +writeFeatureObject()
+  +writeFeaturesObject()
+  +writeGeometryObject()
+}
+
+class XMLFeature {
+  +constructor()
+  +getType()
+  +readFeature()
+  +readFeatureFromDocument()
+  +readFeatureFromNode()
+  +readFeatures()
+  #readFeaturesFromDocument()
+  #readFeaturesFromNode()
+  +readGeometry()
+  #readGeometryFromDocument()
+  #readGeometryFromNode()
+  +readProjection()
+  #readProjectionFromDocument()
+  #readProjectionFromNode()
+  +writeFeature()
+  #writeFeatureNode()
+  +writeFeatures()
+  +writeFeaturesNode()
+  +writeGeometry()
+  +writeGeometryNode()
+}
+
+class GMLBase {
+  +constructor()
+  +readFeaturesInternal()
+  +readGeometryOrExtent()
+  +readExtentElement()
+  +readGeometryElement()
+  +readFeatureElementInternal()
+  +readFeatureElement()
+  +readPoint()
+  +readMultiPoint()
+  +readMultiLineString()
+  +readMultiPolygon()
+  +pointMemberParser()
+  +lineStringMemberParser()
+  +polygonMemberParser()
+  +readLineString()
+  +readFlatLinearRing()
+  +readLinearRing()
+  +readPolygon()
+  +readFlatCoordinatesFromNode()
+  #readGeometryFromNode()
+  +readFeaturesFromNode()
+  +readProjectionFromNode()
+}
+
+class GML2 {
+  +constructor()
+  +readFlatCoordinates()
+  +readBox()
+  +innerBoundaryIsParser()
+  +outerBoundaryIsParser()
+  -GEOMETRY_NODE_FACTORY_()
+  +writeFeatureElement()
+  +writeCurveOrLineString()
+  +writeLineStringOrCurveMember()
+  +writeMultiCurveOrLineString()
+  +writeGeometryElement()
+  -createCoordinatesNode_()
+  -writeCoordinates_()
+  -writeCurveSegments_()
+  +writeSurfaceOrPolygon()
+  -RING_NODE_FACTORY_()
+  -writeSurfacePatches_()
+  +writeRing()
+  -getCoords_()
+  +writePoint()
+  +writeMultiPoint()
+  +writePointMember()
+  +writeLinearRing()
+  +writeMultiSurfaceOrPolygon()
+  +writeSurfaceOrPolygonMember()
+  +writeEnvelope()
+  -MULTIGEOMETRY_MEMBER_NODE_FACTORY_()
+}
+
+class GML3 {
+  +constructor()
+  +readMultiCurve()
+  +readFlatCurveRing()
+  +readMultiSurface()
+  +curveMemberParser()
+  +surfaceMemberParser()
+  +readPatch()
+  +readSegment()
+  +readPolygonPatch()
+  +readLineStringSegment()
+  +interiorParser()
+  +exteriorParser()
+  +readSurface()
+  +readCurve()
+  +readEnvelope()
+  +readFlatPos()
+  +readFlatPosList()
+  -writePos_()
+  -getCoords_()
+  -writePosList_()
+  +writePoint()
+  +writeEnvelope()
+  +writeLinearRing()
+  -RING_NODE_FACTORY_()
+  +writeSurfaceOrPolygon()
+  +writeCurveOrLineString()
+  +writeMultiSurfaceOrPolygon()
+  +writeMultiPoint()
+  +writeMultiCurveOrLineString()
+  +writeRing()
+  +writeSurfaceOrPolygonMember()
+  +writePointMember()
+  +writeLineStringOrCurveMember()
+  -writeSurfacePatches_()
+  -writeCurveSegments_()
+  +writeGeometryElement()
+  +writeFeatureElement()
+  -writeFeatureMembers_()
+  -MULTIGEOMETRY_MEMBER_NODE_FACTORY_()
+  -GEOMETRY_NODE_FACTORY_()
+  +writeGeometryNode()
+  +writeFeaturesNode()
+}
+
+class GML32 {
+  +constructor()
+  +writeGeometryElement()
+}
+
+class GPX {
+  +constructor()
+  -handleReadExtensions_()
+  +readMetadata()
+  +readMetadataFromDocument()
+  +readMetadataFromNode()
+  +readFeatureFromNode()
+  +readFeaturesFromNode()
+  +writeFeaturesNode()
+}
+
+class TextFeature {
+  +constructor()
+  +getType()
+  +readFeature()
+  #readFeatureFromText()
+  +readFeatures()
+  #readFeaturesFromText()
+  +readGeometry()
+  #readGeometryFromText()
+  +readProjection()
+  #readProjectionFromText()
+  +writeFeature()
+  #writeFeatureText()
+  +writeFeatures()
+  #writeFeaturesText()
+  +writeGeometry()
+  #writeGeometryText()
+}
+
+class IGC {
+  +constructor()
+  #readFeatureFromText()
+  #readFeaturesFromText()
+}
+
+class IIIFInfo {
+  +constructor()
+  +setImageInfo()
+  +getImageApiVersion()
+  +getComplianceLevelEntryFromProfile()
+  +getComplianceLevelFromProfile()
+  +getComplianceLevelSupportedFeatures()
+  +getTileSourceOptions()
+}
+
+class KML {
+  +constructor()
+  -readDocumentOrFolder_()
+  -readPlacemark_()
+  -readSharedStyle_()
+  -readSharedStyleMap_()
+  +readFeatureFromNode()
+  #readFeaturesFromNode()
+  +readName()
+  +readNameFromDocument()
+  +readNameFromNode()
+  +readNetworkLinks()
+  +readNetworkLinksFromDocument()
+  +readNetworkLinksFromNode()
+  +readRegion()
+  +readRegionFromDocument()
+  +readRegionFromNode()
+  +readCamera()
+  +readCameraFromDocument()
+  +readCameraFromNode()
+  +writeFeaturesNode()
+}
+
+class Pbf {
+  +constructor()
+  +readFields()
+  +readMessage()
+  +readFixed32()
+  +readSFixed32()
+  +readFixed64()
+  +readSFixed64()
+  +readFloat()
+  +readDouble()
+  +readVarint()
+  +readVarint64()
+  +readSVarint()
+  +readBoolean()
+  +readString()
+  +readBytes()
+  +readPackedVarint()
+  +readPackedSVarint()
+  +readPackedBoolean()
+  +readPackedFloat()
+  +readPackedDouble()
+  +readPackedFixed32()
+  +readPackedSFixed32()
+  +readPackedFixed64()
+  +readPackedSFixed64()
+  +readPackedEnd()
+  +skip()
+  +writeTag()
+  +realloc()
+  +finish()
+  +writeFixed32()
+  +writeSFixed32()
+  +writeFixed64()
+  +writeSFixed64()
+  +writeVarint()
+  +writeSVarint()
+  +writeBoolean()
+  +writeString()
+  +writeFloat()
+  +writeDouble()
+  +writeBytes()
+  +writeRawMessage()
+  +writeMessage()
+  +writePackedVarint()
+  +writePackedSVarint()
+  +writePackedBoolean()
+  +writePackedFloat()
+  +writePackedDouble()
+  +writePackedFixed32()
+  +writePackedSFixed32()
+  +writePackedFixed64()
+  +writePackedSFixed64()
+  +writeBytesField()
+  +writeFixed32Field()
+  +writeSFixed32Field()
+  +writeFixed64Field()
+  +writeSFixed64Field()
+  +writeVarintField()
+  +writeSVarintField()
+  +writeStringField()
+  +writeFloatField()
+  +writeDoubleField()
+  +writeBooleanField()
+}
+
+class MVT {
+  +constructor()
+  -readRawGeometry_()
+  -createFeature_()
+  +getType()
+  +readFeatures()
+  +readProjection()
+  +setLayers()
+}
+
+class OSMXML {
+  +constructor()
+  #readFeaturesFromNode()
+}
+
+class XML {
+  +read()
+  +readFromDocument()
+  +readFromNode()
+}
+
+class OWS {
+  +constructor()
+  +readFromNode()
+}
+
+class Polyline {
+  +constructor()
+  #readFeatureFromText()
+  #readFeaturesFromText()
+  #readGeometryFromText()
+  #writeFeatureText()
+  #writeFeaturesText()
+  #writeGeometryText()
+}
+
+class TopoJSON {
+  +constructor()
+  #readFeaturesFromObject()
+  #readProjectionFromObject()
+}
+
+class WFS {
+  +constructor()
+  +getFeatureType()
+  +setFeatureType()
+  #readFeaturesFromNode()
+  +readTransactionResponse()
+  +readFeatureCollectionMetadata()
+  +readFeatureCollectionMetadataFromDocument()
+  +readFeatureCollectionMetadataFromNode()
+  +readTransactionResponseFromDocument()
+  +readTransactionResponseFromNode()
+  +writeGetFeature()
+  +combineBboxAndFilter()
+  +writeTransaction()
+  +readProjectionFromDocument()
+  +readProjectionFromNode()
+}
+
+class WkbReader {
+  +constructor()
+  +readUint8()
+  +readUint32()
+  +readDouble()
+  +readPoint()
+  +readLineString()
+  +readPolygon()
+  +readWkbHeader()
+  +readWkbPayload()
+  +readWkbBlock()
+  +readWkbCollection()
+  +readMultiPoint()
+  +readMultiLineString()
+  +readMultiPolygon()
+  +readGeometryCollection()
+  +readGeometry()
+  +getSrid()
+}
+
+class WkbWriter {
+  +constructor()
+  +writeUint8()
+  +writeUint32()
+  +writeDouble()
+  +writePoint()
+  +writeLineString()
+  +writePolygon()
+  +writeWkbHeader()
+  +writeMultiPoint()
+  +writeMultiLineString()
+  +writeMultiPolygon()
+  +writeGeometryCollection()
+  +findMinimumLayout()
+  +writeGeometry()
+  +getBuffer()
+}
+
+class WKB {
+  +constructor()
+  +getType()
+  +readFeature()
+  +readFeatures()
+  +readGeometry()
+  +readProjection()
+  +writeFeature()
+  +writeFeatures()
+  +writeGeometry()
+}
+
+class Lexer {
+  +constructor()
+  -isAlpha_()
+  -isNumeric_()
+  -isWhiteSpace_()
+  -nextChar_()
+  +nextToken()
+  -readNumber_()
+  -readText_()
+}
+
+class Parser {
+  +constructor()
+  -consume_()
+  +isTokenType()
+  +match()
+  +parse()
+  -parseGeometryLayout_()
+  -parseGeometryCollectionText_()
+  -parsePointText_()
+  -parseLineStringText_()
+  -parsePolygonText_()
+  -parseMultiPointText_()
+  -parseMultiLineStringText_()
+  -parseMultiPolygonText_()
+  -parsePoint_()
+  -parsePointList_()
+  -parsePointTextList_()
+  -parseLineStringTextList_()
+  -parsePolygonTextList_()
+  -isEmptyGeometry_()
+  -formatErrorMessage_()
+  -parseGeometry_()
+}
+
+class WKT {
+  +constructor()
+  -parse_()
+  #readFeatureFromText()
+  #readFeaturesFromText()
+  #readGeometryFromText()
+  #writeFeatureText()
+  #writeFeaturesText()
+  #writeGeometryText()
+}
+
+class WMSCapabilities {
+  +constructor()
+  +readFromNode()
+}
+
+class WMSGetFeatureInfo {
+  +constructor()
+  +getLayers()
+  +setLayers()
+  -readFeatures_()
+  #readFeaturesFromNode()
+}
+
+class WMTSCapabilities {
+  +constructor()
+  +readFromNode()
+}
+
+class GeolocationError {
+  +constructor()
+}
+
+class Geolocation {
+  +constructor()
+  +disposeInternal()
+  -handleProjectionChanged_()
+  -handleTrackingChanged_()
+  -positionChange_()
+  -positionError_()
+  +getAccuracy()
+  +getAccuracyGeometry()
+  +getAltitude()
+  +getAltitudeAccuracy()
+  +getHeading()
+  +getPosition()
+  +getProjection()
+  +getSpeed()
+  +getTracking()
+  +getTrackingOptions()
+  +setProjection()
+  +setTracking()
+  +setTrackingOptions()
+}
+
+class ImageCanvas {
+  +constructor()
+  +getError()
+  -handleLoad_()
+  +load()
+  +getImage()
+}
+
+class DblClickDragZoom {
+  +constructor()
+  +handleEvent()
+  +handleDragEvent()
+  +handleDownEvent()
+  +handleUpEvent()
+  +stopDown()
+  -updateTrackedPointers_()
+  -waitForDblTap_()
+  -endInteraction_()
+}
+
+class DragAndDropEvent {
+  +constructor()
+}
+
+class DragAndDrop {
+  +constructor()
+  -handleResult_()
+  -registerListeners_()
+  +setActive()
+  +setMap()
+  -tryReadFeatures_()
+  -unregisterListeners_()
+  +handleDrop()
+  +handleStop()
+}
+
+class DragRotateAndZoom {
+  +constructor()
+  +handleDragEvent()
+  +handleUpEvent()
+  +handleDownEvent()
+}
+
+class VectorContext {
+  +drawCustom()
+  +drawGeometry()
+  +setStyle()
+  +drawCircle()
+  +drawFeature()
+  +drawGeometryCollection()
+  +drawLineString()
+  +drawMultiLineString()
+  +drawMultiPoint()
+  +drawMultiPolygon()
+  +drawPoint()
+  +drawPolygon()
+  +drawText()
+  +setFillStrokeStyle()
+  +setImageStyle()
+  +setTextStyle()
+}
+
+class CanvasBuilder {
+  +constructor()
+  #applyPixelRatio()
+  #appendFlatPointCoordinates()
+  #appendFlatLineCoordinates()
+  +drawCustomCoordinates_()
+  +drawCustom()
+  #beginGeometry()
+  +finish()
+  +reverseHitDetectionInstructions()
+  +fillStyleToState()
+  +strokeStyleToState()
+  +setFillStrokeStyle()
+  +createFill()
+  +applyStroke()
+  +createStroke()
+  +updateFillStyle()
+  +updateStrokeStyle()
+  +endGeometry()
+  #getBufferedMaxExtent()
+}
+
+class CanvasImageBuilder {
+  +constructor()
+  +drawPoint()
+  +drawMultiPoint()
+  +finish()
+  +setImageStyle()
+}
+
+class CanvasLineStringBuilder {
+  +constructor()
+  -drawFlatCoordinates_()
+  +drawLineString()
+  +drawMultiLineString()
+  +finish()
+  +applyStroke()
+}
+
+class CanvasPolygonBuilder {
+  +constructor()
+  -drawFlatCoordinatess_()
+  +drawCircle()
+  +drawPolygon()
+  +drawMultiPolygon()
+  +finish()
+  -setFillStrokeStyles_()
+}
+
+class CanvasTextBuilder {
+  +constructor()
+  +finish()
+  +drawText()
+  -saveTextStates_()
+  -drawChars_()
+  +setTextStyle()
+}
+
+class BuilderGroup {
+  +constructor()
+  +finish()
+  +getBuilder()
+}
+
+class ZIndexContext {
+  -pushMethodArgs_
+  +constructor()
+  -push_()
+  +pushFunction()
+  +getContext()
+  +draw()
+  +clear()
+  +offset()
+}
+
+class Executor {
+  +constructor()
+  +getZIndexContext()
+  +createLabel()
+  +replayTextBackground_()
+  -calculateImageOrLabelDimensions_()
+  -replayImageOrLabel_()
+  -fill_()
+  -setStrokeStyle_()
+  -drawLabelWithPointPlacement_()
+  -execute_()
+  +execute()
+  +executeHitDetection()
+}
+
+class ExecutorGroup {
+  +constructor()
+  +clip()
+  -createExecutors_()
+  +hasExecutors()
+  +forEachFeatureAtCoordinate()
+  +getClipCoords()
+  +isEmpty()
+  +execute()
+  +getDeferredZIndexContexts()
+  +getRenderedContext()
+  +renderDeferred()
+}
+
+class CanvasImmediateRenderer {
+  +constructor()
+  -drawImages_()
+  -drawText_()
+  -moveToLineTo_()
+  -drawRings_()
+  +drawCircle()
+  +setStyle()
+  +setTransform()
+  +drawGeometry()
+  +drawFeature()
+  +drawGeometryCollection()
+  +drawPoint()
+  +drawMultiPoint()
+  +drawLineString()
+  +drawMultiLineString()
+  +drawPolygon()
+  +drawMultiPolygon()
+  -setContextFillState_()
+  -setContextStrokeState_()
+  -setContextTextState_()
+  +setFillStrokeStyle()
+  +setImageStyle()
+  +setTextStyle()
+}
+
+class CanvasLayerRenderer {
+  +constructor()
+  +getImageData()
+  +getBackground()
+  +useContainer()
+  #clipUnrotated()
+  #prepareContainer()
+  -dispatchRenderEvent_()
+  #preRender()
+  #postRender()
+  +renderDeferredInternal()
+  +getRenderContext()
+  +renderDeferred()
+  #getRenderTransform()
+  +disposeInternal()
+}
+
+class CanvasVectorLayerRenderer {
+  +constructor()
+  +renderWorlds()
+  -setDrawContext_()
+  -resetDrawContext_()
+  +renderDeclutter()
+  +renderDeferredInternal()
+  +renderFrame()
+  +getFeatures()
+  +forEachFeatureAtCoordinate()
+  +handleFontsChanged()
+  -handleStyleImageChange_()
+  +prepareFrame()
+  +renderFeature()
+}
+
+class VectorLayer {
+  +constructor()
+  +createRenderer()
+}
+
+class RBush {
+  +constructor()
+  +insert()
+  +load()
+  +remove()
+  +update()
+  +getAll()
+  +getInExtent()
+  +forEach()
+  +forEachInExtent()
+  -forEach_()
+  +isEmpty()
+  +clear()
+  +getExtent()
+  +concat()
+}
+
+class Source {
+  +constructor()
+  +getAttributions()
+  +getAttributionsCollapsible()
+  +getProjection()
+  +getResolutions()
+  +getView()
+  +getState()
+  +getWrapX()
+  +getInterpolate()
+  +refresh()
+  +setAttributions()
+  +setState()
+}
+
+class VectorSourceEvent {
+  +constructor()
+}
+
+class VectorSource {
+  +constructor()
+  +addFeature()
+  #addFeatureInternal()
+  -setupChangeEvents_()
+  -addToIndex_()
+  +addFeatures()
+  #addFeaturesInternal()
+  -bindFeaturesCollection_()
+  +clear()
+  +forEachFeature()
+  +forEachFeatureAtCoordinateDirect()
+  +forEachFeatureInExtent()
+  +forEachFeatureIntersectingExtent()
+  +getFeaturesCollection()
+  +getFeatures()
+  +getFeaturesAtCoordinate()
+  +getFeaturesInExtent()
+  +getClosestFeatureToCoordinate()
+  +getExtent()
+  +getFeatureById()
+  +getFeatureByUid()
+  +getFormat()
+  +getOverlaps()
+  +getUrl()
+  -handleFeatureChange_()
+  +hasFeature()
+  +isEmpty()
+  +loadFeatures()
+  +refresh()
+  +removeLoadedExtent()
+  +removeFeatures()
+  +removeFeature()
+  #removeFeatureInternal()
+  -removeFromIdIndex_()
+  +setLoader()
+  +setUrl()
+  +setOverlaps()
+}
+
+class DrawEvent {
+  +constructor()
+}
+
+class Draw {
+  +constructor()
+  +setTrace()
+  +setMap()
+  +getOverlay()
+  +handleEvent()
+  +handleDownEvent()
+  -deactivateTrace_()
+  -toggleTraceState_()
+  -addOrRemoveTracedCoordinates_()
+  -removeTracedCoordinates_()
+  -addTracedCoordinates_()
+  -updateTrace_()
+  +handleUpEvent()
+  -handlePointerMove_()
+  -atFinish_()
+  -createOrUpdateSketchPoint_()
+  -createOrUpdateCustomSketchLine_()
+  -startDrawing_()
+  -modifyDrawing_()
+  -addToDrawing_()
+  +removeLastPoints_()
+  +removeLastPoint()
+  +finishDrawing()
+  -abortDrawing_()
+  +abortDrawing()
+  +appendCoordinates()
+  +extend()
+  -updateSketchFeatures_()
+  -updateState_()
+}
+
+class ExtentEvent {
+  +constructor()
+}
+
+class Extent {
+  +constructor()
+  -snapToVertex_()
+  -handlePointerMove_()
+  -createOrUpdateExtentFeature_()
+  -createOrUpdatePointerFeature_()
+  +handleEvent()
+  +handleDownEvent()
+  +handleDragEvent()
+  +handleUpEvent()
+  +setMap()
+  +getExtent()
+  +getExtentInternal()
+  +setExtent()
+}
+
+class Link {
+  +constructor()
+  -getParamName_()
+  -get_()
+  -set_()
+  -delete_()
+  +setMap()
+  -registerListeners_()
+  -unregisterListeners_()
+  -handleChangeLayerGroup_()
+  -updateState_()
+  +track()
+  +update()
+  -updateUrl_()
+  -updateHistory_()
+}
+
+class ModifyEvent {
+  +constructor()
+}
+
+class Modify {
+  +constructor()
+  -addFeature_()
+  -willModifyFeatures_()
+  -removeFeature_()
+  -removeFeatureSegmentData_()
+  +setActive()
+  +setMap()
+  +getOverlay()
+  -handleSourceAdd_()
+  -handleSourceRemove_()
+  -handleFeatureAdd_()
+  -handleFeatureChange_()
+  -handleFeatureRemove_()
+  -writePointGeometry_()
+  -writeMultiPointGeometry_()
+  -writeLineStringGeometry_()
+  -writeMultiLineStringGeometry_()
+  -writePolygonGeometry_()
+  -writeMultiPolygonGeometry_()
+  -writeCircleGeometry_()
+  -writeGeometryCollectionGeometry_()
+  -createOrUpdateVertexFeature_()
+  +handleEvent()
+  +findInsertVerticesAndUpdateDragSegments_()
+  +handleDragEvent()
+  +handleDownEvent()
+  +handleUpEvent()
+  -handlePointerMove_()
+  -handlePointerAtPixel_()
+  -insertVertex_()
+  +updatePointer_()
+  +getPoint()
+  +canRemovePoint()
+  +removePoint()
+  -removeVertex_()
+  +canInsertPoint()
+  +insertPoint()
+  -setGeometryCoordinates_()
+  -updateSegmentIndices_()
+}
+
+class SelectEvent {
+  +constructor()
+}
+
+class Select {
+  +constructor()
+  -addFeatureLayerAssociation_()
+  +getFeatures()
+  +getHitTolerance()
+  +getLayer()
+  +setHitTolerance()
+  +setMap()
+  -addFeature_()
+  -removeFeature_()
+  +getStyle()
+  -applySelectedStyle_()
+  -restorePreviousStyle_()
+  -removeFeatureLayerAssociation_()
+  +handleEvent()
+}
+
+class Snap {
+  +constructor()
+  +addFeature()
+  -getFeatures_()
+  -areSnapDataEqual_()
+  +handleEvent()
+  -handleFeatureAdd_()
+  -handleFeatureRemove_()
+  -handleFeatureChange_()
+  +handleUpEvent()
+  +removeFeature()
+  +setMap()
+  +snapTo()
+  -updateFeature_()
+}
+
+class TranslateEvent {
+  +constructor()
+}
+
+class Translate {
+  +constructor()
+  +handleDownEvent()
+  +handleUpEvent()
+  +handleDragEvent()
+  +handleMoveEvent()
+  -featuresAtPixel_()
+  +getHitTolerance()
+  +setHitTolerance()
+  +setMap()
+  -handleActiveChanged_()
+  -updateState_()
+}
+
+class BaseImageLayer {
+  +constructor()
+}
+
+class BaseTileLayer {
+  +constructor()
+  #getCacheSize()
+  +getPreload()
+  +setPreload()
+  +getUseInterimTilesOnError()
+  +setUseInterimTilesOnError()
+  +getData()
+}
+
+class FlowLayerRenderer {
+  +constructor()
+  +afterHelperCreated()
+  +createSizeDependentTextures_()
+  +beforeFinalize()
+  +drawParticleTrails_()
+  +drawTexture_()
+  +drawParticleColor_()
+  +updateParticlePositions_()
+}
+
+class FlowLayer {
+  +constructor()
+  -handleSourceUpdate_()
+  +updateStyleVariables()
+  +getSources()
+  +createRenderer()
+}
+
+class Graticule {
+  +constructor()
+  +strategyFunction()
+  +loaderFunction()
+  -addMeridian_()
+  -addParallel_()
+  -drawLabels_()
+  -createGraticule_()
+  -getInterval_()
+  -getMeridian_()
+  -getMeridianPoint_()
+  +getMeridians()
+  -getParallel_()
+  -getParallelPoint_()
+  +getParallels()
+  -updateProjectionInfo_()
+}
+
+class ShaderBuilder {
+  +constructor()
+  +addUniform()
+  +addAttribute()
+  +setSymbolSizeExpression()
+  +getSymbolSizeExpression()
+  +setSymbolRotationExpression()
+  +setSymbolOffsetExpression()
+  +getSymbolOffsetExpression()
+  +setSymbolColorExpression()
+  +getSymbolColorExpression()
+  +setTextureCoordinateExpression()
+  +setFragmentDiscardExpression()
+  +getFragmentDiscardExpression()
+  +setSymbolRotateWithView()
+  +setStrokeWidthExpression()
+  +setStrokeColorExpression()
+  +getStrokeColorExpression()
+  +setStrokeOffsetExpression()
+  +setStrokeCapExpression()
+  +setStrokeJoinExpression()
+  +setStrokeMiterLimitExpression()
+  +setStrokeDistanceFieldExpression()
+  +setFillColorExpression()
+  +getFillColorExpression()
+  +addVertexShaderFunction()
+  +addFragmentShaderFunction()
+  +getSymbolVertexShader()
+  +getSymbolFragmentShader()
+  +getStrokeVertexShader()
+  +getStrokeFragmentShader()
+  +getFillVertexShader()
+  +getFillFragmentShader()
+}
+
+class MixedGeometryBatch {
+  +constructor()
+  +addFeatures()
+  +addFeature()
+  -clearFeatureEntryInPointBatch_()
+  -clearFeatureEntryInLineStringBatch_()
+  -clearFeatureEntryInPolygonBatch_()
+  -addGeometry_()
+  -addCoordinates_()
+  -addRefToEntry_()
+  -removeRef_()
+  +changeFeature()
+  +removeFeature()
+  +clear()
+  +getFeatureFromRef()
+  +isEmpty()
+  +filter()
+}
+
+class VectorStyleRenderer {
+  +constructor()
+  -computeFeatureFilter()
+  +generateBuffers()
+  -generateRenderInstructions_()
+  -generateBuffersForType_()
+  +render()
+  -renderInternal_()
+  +setHelper()
+}
+
+class WebGLRenderTarget {
+  +constructor()
+  +setSize()
+  +getSize()
+  +clearCachedData()
+  +readAll()
+  +readPixel()
+  +getTexture()
+  +getFramebuffer()
+  +getDepthbuffer()
+  -updateSize_()
+}
+
+class WebGLVectorLayerRenderer {
+  +constructor()
+  -addInitialFeatures_()
+  -applyOptions_()
+  -createRenderers_()
+  +reset()
+  +afterHelperCreated()
+  -handleSourceFeatureAdded_()
+  -handleSourceFeatureChanged_()
+  -handleSourceFeatureDelete_()
+  -handleSourceFeatureClear_()
+  -applyUniforms_()
+  +renderFrame()
+  +prepareFrameInternal()
+  +renderWorlds()
+  +forEachFeatureAtCoordinate()
+  +disposeBuffers()
+  +disposeInternal()
+  +renderDeclutter()
+}
+
+class Heatmap {
+  +constructor()
+  +getBlur()
+  +getGradient()
+  +getRadius()
+  -handleGradientChanged_()
+  +setBlur()
+  +setGradient()
+  +setRadius()
+  +setFilter()
+  +setWeight()
+  +createRenderer()
+  +updateStyleVariables()
+  +renderDeclutter()
+}
+
+class CanvasImageLayerRenderer {
+  +constructor()
+  +getImage()
+  +prepareFrame()
+  +getData()
+  +renderFrame()
+}
+
+class ImageLayer {
+  +constructor()
+  +createRenderer()
+  +getData()
+}
+
+class CanvasTileLayerRenderer {
+  +constructor()
+  +getTileCache()
+  #getOrCreateTile()
+  #getTile()
+  +getData()
+  +prepareFrame()
+  +enqueueTiles()
+  -findStaleTile_()
+  -findAltTiles_()
+  +renderFrame()
+  +updateCacheSize()
+  #drawTile()
+  +getImage()
+  #getTileImage()
+  #updateUsedTiles()
+}
+
+class TileLayer {
+  +constructor()
+  +createRenderer()
+}
+
+class CanvasVectorImageLayerRenderer {
+  +constructor()
+  +disposeInternal()
+  +getFeatures()
+  +handleFontsChanged()
+  +prepareFrame()
+  +preRender()
+  +postRender()
+  +renderDeclutter()
+  +forEachFeatureAtCoordinate()
+}
+
+class VectorImageLayer {
+  +constructor()
+  +getImageRatio()
+  +createRenderer()
+}
+
+class CanvasVectorTileLayerRenderer {
+  +constructor()
+  +drawTile()
+  +getTile()
+  +prepareFrame()
+  -updateExecutorGroup_()
+  +forEachFeatureAtCoordinate()
+  +getFeatures()
+  +getFeaturesInExtent()
+  +handleFontsChanged()
+  -handleStyleImageChange_()
+  +renderDeclutter()
+  +renderDeferredInternal()
+  +getTileRenderTransform()
+  +postRender()
+  +renderFeature()
+  -tileImageNeedsRender_()
+  -renderTileImage_()
+}
+
+class VectorTileLayer {
+  +constructor()
+  +createRenderer()
+  +getFeatures()
+  +getFeaturesInExtent()
+  +getRenderMode()
+  +getPreload()
+  +getUseInterimTilesOnError()
+  +setPreload()
+  +setUseInterimTilesOnError()
+}
+
+class WebGLPointsLayerRenderer {
+  +constructor()
+  +afterHelperCreated()
+  -handleSourceFeatureAdded_()
+  -handleSourceFeatureChanged_()
+  -handleSourceFeatureDelete_()
+  -handleSourceFeatureClear_()
+  +renderFrame()
+  +prepareFrameInternal()
+  -rebuildBuffers_()
+  +forEachFeatureAtCoordinate()
+  +renderWorlds()
+  +disposeInternal()
+  +renderDeclutter()
+}
+
+class WebGLPointsLayer {
+  +constructor()
+  +createRenderer()
+  +updateStyleVariables()
+}
+
+class WebGLTileLayer {
+  +constructor()
+  +getSources()
+  +getRenderSource()
+  +getSourceState()
+  -handleSourceUpdate_()
+  -getSourceBandCount_()
+  +createRenderer()
+  +renderSources()
+  +render()
+  +setStyle()
+  +updateStyleVariables()
+}
+
+class WebGLVectorLayer {
+  +constructor()
+  +createRenderer()
+  +updateStyleVariables()
+  +setStyle()
+}
+
+class TileGeometry {
+  +constructor()
+  -generateMaskBuffer_()
+  +uploadTile()
+  +disposeInternal()
+  +disposeBuffers()
+}
+
+class WebGLVectorTileLayerRenderer {
+  +constructor()
+  +reset()
+  -applyOptions_()
+  -createRenderers_()
+  -initTileMask_()
+  +afterHelperCreated()
+  +createTileRepresentation()
+  +beforeTilesRender()
+  +beforeTilesMaskRender()
+  +renderTileMask()
+  -applyUniforms_()
+  +renderTile()
+  +renderDeclutter()
+  +disposeInternal()
+}
+
+class WebGLVectorTileLayer {
+  +constructor()
+  +createRenderer()
+  +updateStyleVariables()
+  +setStyle()
+}
+
+class ResponseError {
+  +constructor()
+}
+
+class ClientError {
+  +constructor()
+}
+
+class Canvas {
+  +constructor()
+  +drawImage()
+}
+
+class ReprojDataTile {
+  +constructor()
+  +getSize()
+  +getData()
+  +getError()
+  -reproject_()
+  +load()
+  -unlistenSources_()
+}
+
+class ReprojImage {
+  +constructor()
+  +disposeInternal()
+  +getImage()
+  +getProjection()
+  -reproject_()
+  +load()
+  -unlistenSource_()
+}
+
+class ImageSourceEvent {
+  +constructor()
+}
+
+class ImageSource {
+  +constructor()
+  +getResolutions()
+  +setResolutions()
+  #findNearestResolution()
+  +getImage()
+  #getImageInternal()
+  #handleImageChange()
+}
+
+class TileGrid {
+  +constructor()
+  +forEachTileCoord()
+  +forEachTileCoordParentTileRange()
+  +getExtent()
+  +getMaxZoom()
+  +getMinZoom()
+  +getOrigin()
+  +getResolution()
+  +getResolutions()
+  +getTileCoordChildTileRange()
+  +getTileRangeForTileCoordAndZ()
+  +getTileRangeForExtentAndZ()
+  +getTileCoordCenter()
+  +getTileCoordExtent()
+  +getTileCoordForCoordAndResolution()
+  -getTileCoordForXYAndResolution_()
+  -getTileCoordForXYAndZ_()
+  +getTileCoordForCoordAndZ()
+  +getTileCoordResolution()
+  +getTileSize()
+  +getFullTileRange()
+  +getZForResolution()
+  +tileCoordIntersectsViewport()
+  -calculateTileRanges_()
+}
+
+class WMTSTileGrid {
+  +constructor()
+  +getMatrixId()
+  +getMatrixIds()
+}
+
+class TileSource {
+  +constructor()
+  +getGutterForProjection()
+  +getKey()
+  #setKey()
+  +getResolutions()
+  +getTile()
+  +getTileGrid()
+  +getTileGridForProjection()
+  +getTilePixelRatio()
+  +getTilePixelSize()
+  +getTileCoordForTileUrlFunction()
+  +clear()
+  +refresh()
+}
+
+class TileSourceEvent {
+  +constructor()
+}
+
+class UrlTile {
+  +constructor()
+  +getTileLoadFunction()
+  +getTileUrlFunction()
+  +getUrls()
+  #handleTileChange()
+  +setTileLoadFunction()
+  +setTileUrlFunction()
+  +setUrl()
+  +setUrls()
+  +tileUrlFunction()
+}
+
+class TileImage {
+  +constructor()
+  +getGutterForProjection()
+  +getGutter()
+  +getKey()
+  +getTileGridForProjection()
+  -createTile_()
+  +getTile()
+  #getTileInternal()
+  +setRenderReprojectionEdges()
+  +setTileGridForProjection()
+}
+
+class BingMaps {
+  +constructor()
+  +getApiKey()
+  +getImagerySet()
+  +handleImageryMetadataResponse()
+}
+
+class XYZ {
+  +constructor()
+  +getGutter()
+}
+
+class CartoDB {
+  +constructor()
+  +getConfig()
+  +updateConfig()
+  +setConfig()
+  -initializeMap_()
+  -handleInitResponse_()
+  -handleInitError_()
+  -applyTemplate_()
+}
+
+class Cluster {
+  +constructor()
+  +clear()
+  +getDistance()
+  +getSource()
+  +loadFeatures()
+  +setDistance()
+  +setMinDistance()
+  +getMinDistance()
+  +setSource()
+  +refresh()
+  +updateDistance()
+  #cluster()
+  #createCluster()
+}
+
+class DataTileSource {
+  +constructor()
+  #setTileSizes()
+  #getTileSize()
+  +getGutterForProjection()
+  #setLoader()
+  +getReprojTile_()
+  +getTile()
+  +handleTileChange_()
+  +getTileGridForProjection()
+  +setTileGridForProjection()
+}
+
+class GeoTIFFSource {
+  +constructor()
+  +getError()
+  +determineProjection()
+  +determineTransformMatrix()
+  -configure_()
+  -loadTile_()
+  -composeTile_()
+}
+
+class Google {
+  +constructor()
+  +getError()
+  +fetchSessionToken()
+  -createSession_()
+  -fetchAttributions_()
+  +disposeInternal()
+}
+
+class Zoomify {
+  +constructor()
+}
+
+class IIIF {
+  +constructor()
+}
+
+class ImageArcGISRest {
+  +constructor()
+  +getParams()
+  +getImageInternal()
+  +getImageLoadFunction()
+  +getUrl()
+  +setImageLoadFunction()
+  +setUrl()
+  +setParams()
+  +updateParams()
+  +changed()
+}
+
+class ImageCanvasSource {
+  +constructor()
+  +getImageInternal()
+}
+
+class ImageMapGuide {
+  +constructor()
+  +getParams()
+  +getImageInternal()
+  +getImageLoadFunction()
+  +setParams()
+  +updateParams()
+  +setImageLoadFunction()
+  +changed()
+}
+
+class Static {
+  +constructor()
+  +getImageExtent()
+  +getImageInternal()
+  +getUrl()
+}
+
+class ImageTileSource {
+  +constructor()
+  +setUrl()
+}
+
+class ImageWMS {
+  +constructor()
+  +getFeatureInfoUrl()
+  +getLegendUrl()
+  +getParams()
+  +getImageInternal()
+  +getImageLoadFunction()
+  +getUrl()
+  +setImageLoadFunction()
+  +setUrl()
+  +setParams()
+  +updateParams()
+  +changed()
+}
+
+class OGCMapTile {
+  +constructor()
+  -handleTileSetInfo_()
+  -handleError_()
+}
+
+class VectorRenderTile {
+  +constructor()
+  +getContext()
+  +hasContext()
+  +getImage()
+  +getReplayState()
+  +load()
+  +release()
+}
+
+class VectorTile {
+  +constructor()
+  +getOverlaps()
+  +getSourceTiles()
+  +removeSourceTiles()
+  +getTile()
+  +getTileGridForProjection()
+  +getTilePixelRatio()
+  +getTilePixelSize()
+  +setOverlaps()
+}
+
+class OGCVectorTile {
+  +constructor()
+  -handleTileSetInfo_()
+  -handleError_()
+}
+
+class OSM {
+  +constructor()
+}
+
+class Processor {
+  +constructor()
+  +process()
+  +enqueue_()
+  +dispatch_()
+  +onWorkerMessage_()
+  +resolveJob_()
+  +disposeInternal()
+}
+
+class RasterSourceEvent {
+  +constructor()
+}
+
+class RasterSource {
+  +constructor()
+  +setOperation()
+  -updateFrameState_()
+  -allSourcesReady_()
+  +getImage()
+  -processSources_()
+  -onWorkerComplete_()
+  +getResolutions()
+  +disposeInternal()
+}
+
+class SentinelHub {
+  +constructor()
+  +setAuth()
+  +setData()
+  +setEvalscript()
+  +fireWhenReady_()
+  -loadTile_()
+  +getError()
+  +disposeInternal()
+}
+
+class StadiaMaps {
+  +constructor()
+}
+
+class TileArcGISRest {
+  +constructor()
+  -getKeyForParams_()
+  +getParams()
+  -getRequestUrl_()
+  +getTilePixelRatio()
+  +setParams()
+  +updateParams()
+  +tileUrlFunction()
+}
+
+class TileDebug {
+  +constructor()
+}
+
+class TileJSON {
+  +constructor()
+  -onXHRLoad_()
+  -onXHRError_()
+  +getTileJSON()
+  #handleTileJSONResponse()
+  #handleTileJSONError()
+}
+
+class TileWMS {
+  +constructor()
+  +getFeatureInfoUrl()
+  +getLegendUrl()
+  +getGutter()
+  +getParams()
+  -getRequestUrl_()
+  +getTilePixelRatio()
+  -getKeyForParams_()
+  -setParams_()
+  +setParams()
+  +updateParams()
+  -updateV13_()
+  +tileUrlFunction()
+}
+
+class CustomTile {
+  +constructor()
+  +getImage()
+  +getData()
+  +forDataAtCoordinate()
+  +getKey()
+  -handleError_()
+  -handleLoad_()
+  -loadInternal_()
+  -onXHRLoad_()
+  -onXHRError_()
+  +load()
+}
+
+class UTFGrid {
+  +constructor()
+  -onXHRLoad_()
+  -onXHRError_()
+  +getTemplate()
+  +forDataAtCoordinateAndResolution()
+  #handleTileJSONError()
+  #handleTileJSONResponse()
+  +getTile()
+}
+
+class WMTS {
+  +constructor()
+  +setUrls()
+  +getDimensions()
+  +getFormat()
+  +getLayer()
+  +getMatrixSet()
+  +getRequestEncoding()
+  +getStyle()
+  +getVersion()
+  -getKeyForDimensions_()
+  +updateDimensions()
+  +createFromWMTSTemplate()
+}
+
+Disposable <|-- Target
+Target <|-- Observable
+BaseEvent <|-- ObjectEvent
+Observable <|-- BaseObject
+BaseEvent <|-- CollectionEvent
+BaseObject <|-- Collection
+Target <|-- ImageWrapper
+Target <|-- IconImage
+BaseObject <|-- Control
+Control <|-- Attribution
+Control <|-- Rotate
+Control <|-- Zoom
+Control <|-- FullScreen
+Projection <|-- EPSG3857Projection
+Projection <|-- EPSG4326Projection
+Control <|-- MousePosition
+BaseEvent <|-- MapEvent
+MapEvent <|-- MapBrowserEvent
+Target <|-- MapBrowserEventHandler
+PriorityQueue <|-- TileQueue
+BaseObject <|-- Geometry
+Geometry <|-- SimpleGeometry
+SimpleGeometry <|-- LinearRing
+SimpleGeometry <|-- Point
+SimpleGeometry <|-- Polygon
+BaseObject <|-- View
+BaseObject <|-- Interaction
+Interaction <|-- DoubleClickZoom
+Interaction <|-- PointerInteraction
+PointerInteraction <|-- DragPan
+PointerInteraction <|-- DragRotate
+Disposable <|-- RenderBox
+BaseEvent <|-- DragBoxEvent
+PointerInteraction <|-- DragBox
+DragBox <|-- DragZoom
+Interaction <|-- KeyboardPan
+Interaction <|-- KeyboardZoom
+Interaction <|-- MouseWheelZoom
+PointerInteraction <|-- PinchRotate
+PointerInteraction <|-- PinchZoom
+BaseObject <|-- BaseLayer
+BaseEvent <|-- GroupEvent
+BaseLayer <|-- LayerGroup
+BaseLayer <|-- Layer
+ImageStyle <|-- RegularShape
+RegularShape <|-- CircleStyle
+ImageStyle <|-- Icon
+Layer <|-- BaseVectorLayer
+BaseEvent <|-- RenderEvent
+Disposable <|-- MapRenderer
+MapRenderer <|-- CompositeMapRenderer
+BaseObject <|-- Overlay
+Control <|-- OverviewMap
+Control <|-- ScaleLine
+Control <|-- ZoomSlider
+Control <|-- ZoomToExtent
+Target <|-- Tile
+Tile <|-- DataTile
+BaseEvent <|-- SnapEvent
+Disposable <|-- WebGLHelper
+Tile <|-- ImageTile
+Tile <|-- ReprojTile
+Target <|-- BaseTileRepresentation
+BaseTileRepresentation <|-- TileTexture
+Observable <|-- LayerRenderer
+LayerRenderer <|-- WebGLLayerRenderer
+WebGLLayerRenderer <|-- WebGLBaseTileLayerRenderer
+WebGLBaseTileLayerRenderer <|-- WebGLTileLayerRenderer
+BaseObject <|-- Feature
+SimpleGeometry <|-- LineString
+SimpleGeometry <|-- MultiLineString
+SimpleGeometry <|-- MultiPoint
+SimpleGeometry <|-- MultiPolygon
+SimpleGeometry <|-- Circle
+Geometry <|-- GeometryCollection
+FeatureFormat <|-- JSONFeature
+JSONFeature <|-- EsriJSON
+Filter <|-- LogicalNary
+LogicalNary <|-- And
+Filter <|-- Bbox
+Filter <|-- Comparison
+Comparison <|-- ComparisonBinary
+Filter <|-- Spatial
+Spatial <|-- Contains
+Spatial <|-- Disjoint
+Comparison <|-- During
+Spatial <|-- DWithin
+ComparisonBinary <|-- EqualTo
+ComparisonBinary <|-- GreaterThan
+ComparisonBinary <|-- GreaterThanOrEqualTo
+Spatial <|-- Intersects
+Comparison <|-- IsBetween
+Comparison <|-- IsLike
+Comparison <|-- IsNull
+ComparisonBinary <|-- LessThan
+ComparisonBinary <|-- LessThanOrEqualTo
+Filter <|-- Not
+ComparisonBinary <|-- NotEqualTo
+LogicalNary <|-- Or
+Filter <|-- ResourceId
+Spatial <|-- Within
+JSONFeature <|-- GeoJSON
+FeatureFormat <|-- XMLFeature
+XMLFeature <|-- GMLBase
+GMLBase <|-- GML2
+GMLBase <|-- GML3
+GML3 <|-- GML32
+XMLFeature <|-- GPX
+FeatureFormat <|-- TextFeature
+TextFeature <|-- IGC
+XMLFeature <|-- KML
+FeatureFormat <|-- MVT
+XMLFeature <|-- OSMXML
+XML <|-- OWS
+TextFeature <|-- Polyline
+JSONFeature <|-- TopoJSON
+XMLFeature <|-- WFS
+FeatureFormat <|-- WKB
+TextFeature <|-- WKT
+XML <|-- WMSCapabilities
+XMLFeature <|-- WMSGetFeatureInfo
+XML <|-- WMTSCapabilities
+BaseEvent <|-- GeolocationError
+BaseObject <|-- Geolocation
+ImageWrapper <|-- ImageCanvas
+Interaction <|-- DblClickDragZoom
+BaseEvent <|-- DragAndDropEvent
+Interaction <|-- DragAndDrop
+PointerInteraction <|-- DragRotateAndZoom
+VectorContext <|-- CanvasBuilder
+CanvasBuilder <|-- CanvasImageBuilder
+CanvasBuilder <|-- CanvasLineStringBuilder
+CanvasBuilder <|-- CanvasPolygonBuilder
+CanvasBuilder <|-- CanvasTextBuilder
+VectorContext <|-- CanvasImmediateRenderer
+LayerRenderer <|-- CanvasLayerRenderer
+CanvasLayerRenderer <|-- CanvasVectorLayerRenderer
+BaseVectorLayer <|-- VectorLayer
+BaseObject <|-- Source
+BaseEvent <|-- VectorSourceEvent
+Source <|-- VectorSource
+BaseEvent <|-- DrawEvent
+PointerInteraction <|-- Draw
+BaseEvent <|-- ExtentEvent
+PointerInteraction <|-- Extent
+Interaction <|-- Link
+BaseEvent <|-- ModifyEvent
+PointerInteraction <|-- Modify
+BaseEvent <|-- SelectEvent
+Interaction <|-- Select
+PointerInteraction <|-- Snap
+BaseEvent <|-- TranslateEvent
+PointerInteraction <|-- Translate
+Layer <|-- BaseImageLayer
+Layer <|-- BaseTileLayer
+WebGLTileLayerRenderer <|-- FlowLayerRenderer
+BaseTileLayer <|-- FlowLayer
+VectorLayer <|-- Graticule
+WebGLLayerRenderer <|-- WebGLVectorLayerRenderer
+BaseVectorLayer <|-- Heatmap
+CanvasLayerRenderer <|-- CanvasImageLayerRenderer
+BaseImageLayer <|-- ImageLayer
+CanvasLayerRenderer <|-- CanvasTileLayerRenderer
+BaseTileLayer <|-- TileLayer
+CanvasImageLayerRenderer <|-- CanvasVectorImageLayerRenderer
+BaseVectorLayer <|-- VectorImageLayer
+CanvasTileLayerRenderer <|-- CanvasVectorTileLayerRenderer
+BaseVectorLayer <|-- VectorTileLayer
+WebGLLayerRenderer <|-- WebGLPointsLayerRenderer
+Layer <|-- WebGLPointsLayer
+BaseTileLayer <|-- WebGLTileLayer
+Layer <|-- WebGLVectorLayer
+BaseTileRepresentation <|-- TileGeometry
+WebGLBaseTileLayerRenderer <|-- WebGLVectorTileLayerRenderer
+BaseTileLayer <|-- WebGLVectorTileLayer
+Error <|-- ResponseError
+Error <|-- ClientError
+DataTile <|-- ReprojDataTile
+ImageWrapper <|-- ReprojImage
+BaseEvent <|-- ImageSourceEvent
+Source <|-- ImageSource
+TileGrid <|-- WMTSTileGrid
+Source <|-- TileSource
+BaseEvent <|-- TileSourceEvent
+TileSource <|-- UrlTile
+UrlTile <|-- TileImage
+TileImage <|-- BingMaps
+TileImage <|-- XYZ
+XYZ <|-- CartoDB
+VectorSource <|-- Cluster
+TileSource <|-- DataTileSource
+DataTileSource <|-- GeoTIFFSource
+TileImage <|-- Google
+TileImage <|-- Zoomify
+TileImage <|-- IIIF
+ImageSource <|-- ImageArcGISRest
+ImageSource <|-- ImageCanvasSource
+ImageSource <|-- ImageMapGuide
+ImageSource <|-- Static
+DataTileSource <|-- ImageTileSource
+ImageSource <|-- ImageWMS
+TileImage <|-- OGCMapTile
+Tile <|-- VectorRenderTile
+UrlTile <|-- VectorTile
+VectorTile <|-- OGCVectorTile
+XYZ <|-- OSM
+Disposable <|-- Processor
+BaseEvent <|-- RasterSourceEvent
+ImageSource <|-- RasterSource
+DataTileSource <|-- SentinelHub
+XYZ <|-- StadiaMaps
+TileImage <|-- TileArcGISRest
+ImageTileSource <|-- TileDebug
+TileImage <|-- TileJSON
+TileImage <|-- TileWMS
+Tile <|-- CustomTile
+TileSource <|-- UTFGrid
+TileImage <|-- WMTS
+
+@enduml

@@ -1,0 +1,19 @@
+@startuml
+
+class Animal {
+  +name
+  -_age
+  +constructor()
+  +speak()
+  #eat()
+  #move()
+}
+
+class Dog {
+  +breed
+  +bark()
+}
+
+Dog <|-- Animal
+
+@enduml

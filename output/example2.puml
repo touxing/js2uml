@@ -1,0 +1,36 @@
+@startuml
+
+class Person {
+  +name
+  -_age
+  +constructor()
+  +speak()
+  #eat()
+  #move()
+}
+
+class Teacher {
+  +breed
+  +bark()
+  +teach()
+}
+
+class Animal {
+  +name
+  -_age
+  +constructor()
+  +speak()
+  #eat()
+  #move()
+}
+
+class Dog {
+  +breed
+  +bark()
+}
+
+Person <|-- Animal
+Teacher <|-- Person
+Dog <|-- Animal
+
+@enduml

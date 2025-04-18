@@ -28,11 +28,10 @@ $ node ./src/main.js -i ./example/ -o ./output/example.html
 ```
 $ node ./src/main.js -e puml -i ./example/ -o ./output/example.puml
 ```
-**注意：生成 plantuml 图表，需要下载 plantuml.jar 支持**
+**注意：生成 plantuml 图表，需要下载 plantuml.jar 支持 [官网下载地址](https://plantuml.com/zh/download)  [plantuml使用指南](https://plantuml.com/zh/gui)**
 
 ![example2](output/example2.png)
-[官网下载地址](https://plantuml.com/zh/download)
-[plantuml使用指南](https://plantuml.com/zh/gui)
+
 
 ## 遇到的问题
 
